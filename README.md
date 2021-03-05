@@ -1,9 +1,9 @@
-# For Running My Application:
-In the first terminal (for running the client):
+# To run the application:
+At the first terminal (running the client):
 ```
 npm run client
 ```
-In the second terminal (for running the server):
+At the second terminal (running the server):
 ```
 npm run server
 ```
