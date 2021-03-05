@@ -2,6 +2,12 @@
   <div>
     <div class="map" :class="{'full-size': isFullSize}">
       <div class="full-size-btn" @click="isFullSize = !isFullSize">toggle full size</div>
+    <div v-for="house in this.houses" :key="house.id">
+      <img v-bind:style="{ 'top': housePosition(house).y + 'px', 
+                          'left': housePosition(house).x + 'px' }" 
+           width="80" class="img" :src='(getImgUrl(house.flag))'/>
+    </div>
+
     </div>
   </div>
 </template>
@@ -19,6 +25,7 @@
 
 		housePosition(house: House) {
 			const ratio = this.isFullSize ? 2.5 : 1;
+      return {"x": house.position.x * ratio, "y": house.position.y * ratio };
 		}
 
 		getImgUrl(img: string) {
@@ -52,5 +59,9 @@
       background-color: #775f3c;
       padding: 3px;
     }
+  }
+
+  .img{
+      position: absolute;
   }
 </style>
