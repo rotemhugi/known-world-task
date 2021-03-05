@@ -37,7 +37,7 @@ export default new Vuex.Store({
 		setHouses(state, houses) {
 			state.houses = houses;
 		},
-		seWinner(state, house) {
+		setWinner(state, house) {
 			state.winner = house;
 		},
 		updateHouse(state, house) {
@@ -79,7 +79,7 @@ export default new Vuex.Store({
 			context.commit('updateHouse', house);
 		},
 		setWinner(context, house) {
-			context.commit('seWinner', house);
+			context.commit('setWinner', house);
 		},
 	},
 	modules: {},
