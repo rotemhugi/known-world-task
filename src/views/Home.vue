@@ -66,6 +66,11 @@
 
 			// Calculation the new position & score by current update
 			updateHouse.position = this.calcNewPosition(pos.x,pos.y,dest.x,dest.y,latestUpdate.steps);
+			
+			// At case the score is undefined, it is zero
+			if(updateHouse.score == undefined){
+				updateHouse.score = 0;
+			}
 			updateHouse.score += latestUpdate.score;
 			this.$store.dispatch('updateHouse',updateHouse);
 

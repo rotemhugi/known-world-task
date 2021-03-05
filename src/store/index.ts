@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import data from '../../public/init.json';
 import House from '@/models/House';
 import {IPoint} from '@/models/IPoint';
 import moment from 'moment';
+/* With the server side, using this code: */
+ import axios from 'axios';
+ /* Without the server side, using this code: */
+// import data from '../../public/init.json';
 
 Vue.use(Vuex);
 
@@ -23,7 +26,7 @@ export default new Vuex.Store({
 		kingsLandingPosition: {x: 260, y: 470},
 		winner: undefined,
 		houses: [],
-		updates: []
+		updates: [],
 	} as IStore,
 	getters: {
 		updates: (state) => state.updates,
@@ -70,10 +73,21 @@ export default new Vuex.Store({
 			}());
 		},
 		getHouses(context) {
-			const houses = data['houses'].map(house => new House(house));
-			context.commit('setHouses', houses);
 
-			return houses;
+			/* With the server side, using this code: */
+			axios.get('http://localhost:3000/houses')
+			.then(response => {
+				const houses = response.data;
+				context.commit('setHouses', houses);
+				return houses;
+			  })
+			  .catch(e => {
+				  console.log(e)
+			  })
+
+			/* Without the server side, using this code: */
+			// const houses = data['houses'].map(house => new House(house));
+			// context.commit('setHouses', houses);
 		},
 		updateHouse(context, house) {
 			context.commit('updateHouse', house);

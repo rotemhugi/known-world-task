@@ -1,3 +1,14 @@
+# For Running My Application:
+In the first terminal (for running the client):
+```
+npm run client
+```
+In the second terminal (for running the server):
+```
+npm run server
+```
+
+
 # The Known World
 
 The Lannisters have taken over Kings Landing! Now all houses of the seven kingdoms declare war and head with their armies towards Kings Landing, to restore the order and be the next to sit on the Iron Throne.
